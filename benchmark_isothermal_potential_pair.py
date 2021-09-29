@@ -7,10 +7,10 @@ import pickle
 import numpy as np
 
 # filename to save times to
-filename = "pouch_bench.pkl"
+filename = "isothermal_potential_pair.pkl"
 
 # number of finite volume in current colector domain (must be 1 or >2)
-npts = [1, 3, 4, 8, 16, 32, 64]
+npts = [1, 3, 4, 8, 16, 32, 64, 128, 256, 512]
 
 # number of repeated solves
 repeats = 3
@@ -20,9 +20,7 @@ repeats = 3
 
 # load 1+1D model (standard DFN)
 dfn = pybamm.lithium_ion.DFN(
-    options={
-        "thermal": "lumped",
-    },
+    options={},
     name="1+1D DFN",
 )
 
@@ -31,7 +29,6 @@ dfn_pouch = pybamm.lithium_ion.DFN(
     options={
         "current collector": "potential pair",
         "dimensionality": 1,
-        "thermal": "x-lumped",
     },
     name="1+1+1D DFN",
 )
