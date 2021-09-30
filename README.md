@@ -6,11 +6,12 @@ The benchmarking scripts uses the open-source battery modelling software [PyBaMM
 pip install -e git+https://github.com/pybamm-team/pybamm.git@develop#egg=pybamm
 ```
 
-The repository contains 3 scripts that can be used to benchmarks different models:
+The repository contains 4 scripts that can be used to benchmarks different models:
 
 - `benchmark_potential_pair.py` benchmarks a 1+1+1D "potential pair" model as described in [1, 2]. In this model the problem is split into a model for through-cell behaviour and a model for the transverse behaviour (here a 1D current collector). The through-cell behaviour is described by `N` coupled DFN models. We solve for the potential drop and temperature along the current collector, and the local potential difference provides the electrical boundary conditions for each of the DFN models. For the thermal problem we assume that the temperature is uniform across the thickness of the cell, but varies along the length on the current collector. We assume Newton cooling from all boundaries.
 - `benchmark_isothermal_potential_pair.py` benchmarks an isothermal 1+1+1D "potential pair" model.
-- `benchmark_equipotential_pair.py` benchmarks a similar problem in which the potential in each of the current collectors is uniform, so all of the DFN models see the same potential difference. The temperature can vary along the length of the current collector, and in this model we assume there is no surface cooling and that the temperature at either end of the current collector is fixed at 25&deg;C. We solve an equation to determine the current through each of the DFN models, ensuring charge is conserved.
+- `benchmark_equipotential_pair.py` benchmarks a similar problem in which the potential in each of the current collectors is uniform, so all of the DFN models see the same potential difference. We refer to this as a 1+1+1D "equipotential pair" model. The temperature can vary along the length of the current collector, and in this model we assume there is no surface cooling and that the temperature at either end of the current collector is fixed at 25&deg;C. We solve an equation to determine the current through each of the DFN models, ensuring charge is conserved.
+- `benchmark_isothermal_potential_pair.py` benchmarks an isothermal 1+1+1D "equipotential pair" model.
 
 To benchmark the models we solve them with an increasing number of coupled through-cell models. In each of the scripts you can provide a `filename` where the solve times will be stored as a pickled python dictionary, a list `npts` which is a list of the number of coupled DFN models (and corresponds directly to the number of finite volumes used to discretise the current collector domain), and an integer `repeats` which is the number of times to repeatedly call `solve` to collect timing statistics. The scripts create and solve simulations using each of the values in `npts` and store the following times:
 
