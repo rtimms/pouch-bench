@@ -3,7 +3,7 @@ This repository contains code to benchmark 1+1+1D DFN pouch cell models in PyBaM
 
 The benchmarking scripts uses the open-source battery modelling software [PyBaMM](https://github.com/pybamm-team/PyBaMM). To install the appropriate version of PyBaMM, run:
 ```
-pip install -e git+https://github.com/pybamm-team/pybamm.git@develop#egg=pybamm
+pip install pybamm==21.9
 ```
 
 The repository contains 4 scripts that can be used to benchmarks different models:
