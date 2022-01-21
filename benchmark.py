@@ -23,7 +23,7 @@ def benchmark(
     }
 
     # pick solver
-    solver = pybamm.CasadiSolver(mode="fast", atol=1e-6, rtol=1e-6)
+    solver = pybamm.CasadiSolver(mode="fast with events", atol=1e-6, rtol=1e-6)
 
     # dict to hold times and states for each N
     times_and_states = dict.fromkeys(npts)

@@ -9,7 +9,7 @@ from benchmark import benchmark
 filename = "potential_pair.pkl"
 
 # number of finite volumes in current colector domain (must be 1 or >2)
-npts = [1, 3, 4, 8, 16, 32, 64, 128]
+npts = [1, 3, 4, 8, 16, 32, 64, 128, 256, 512]
 
 # number of repeated solves
 repeats = 3
